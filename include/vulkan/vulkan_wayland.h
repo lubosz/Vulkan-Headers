@@ -47,6 +47,26 @@ VKAPI_ATTR VkBool32 VKAPI_CALL vkGetPhysicalDeviceWaylandPresentationSupportKHR(
     struct wl_display*                          display);
 #endif
 
+
+#define VK_EXT_acquire_wl_display 1
+#define VK_EXT_ACQUIRE_WL_DISPLAY_SPEC_VERSION 1
+#define VK_EXT_ACQUIRE_WL_DISPLAY_EXTENSION_NAME "VK_EXT_acquire_wl_display"
+typedef struct VkWaylandLeaseConnectorEXT {
+    struct zwp_drm_lease_connector_v1*    pConnector;
+    VkDisplayKHR                          pDisplay;
+} VkWaylandLeaseConnectorEXT;
+
+typedef VkResult (VKAPI_PTR *PFN_vkAcquireWaylandDisplayEXT)(VkPhysicalDevice physicalDevice, struct wl_display* display, struct zwp_drm_lease_manager_v1* manager, uint32_t pConnectorCount, VkWaylandLeaseConnectorEXT* pConnectors);
+
+#ifndef VK_NO_PROTOTYPES
+VKAPI_ATTR VkResult VKAPI_CALL vkAcquireWaylandDisplayEXT(
+    VkPhysicalDevice                            physicalDevice,
+    struct wl_display*                          display,
+    struct zwp_drm_lease_manager_v1*            manager,
+    uint32_t                                    pConnectorCount,
+    VkWaylandLeaseConnectorEXT*                 pConnectors);
+#endif
+
 #ifdef __cplusplus
 }
 #endif
