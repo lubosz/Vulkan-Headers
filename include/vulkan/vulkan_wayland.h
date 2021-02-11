@@ -56,13 +56,13 @@ typedef struct VkWaylandLeaseConnectorEXT {
     VkDisplayKHR                          pDisplay;
 } VkWaylandLeaseConnectorEXT;
 
-typedef VkResult (VKAPI_PTR *PFN_vkAcquireWaylandDisplayEXT)(VkPhysicalDevice physicalDevice, struct wl_display* display, struct zwp_drm_lease_manager_v1* manager, uint32_t pConnectorCount, VkWaylandLeaseConnectorEXT* pConnectors);
+typedef VkResult (VKAPI_PTR *PFN_vkAcquireWaylandDisplayEXT)(VkPhysicalDevice physicalDevice, struct wl_display* display, struct zwp_drm_lease_device_v1* leaseDevice, uint32_t pConnectorCount, VkWaylandLeaseConnectorEXT* pConnectors);
 
 #ifndef VK_NO_PROTOTYPES
 VKAPI_ATTR VkResult VKAPI_CALL vkAcquireWaylandDisplayEXT(
     VkPhysicalDevice                            physicalDevice,
     struct wl_display*                          display,
-    struct zwp_drm_lease_manager_v1*            manager,
+    struct zwp_drm_lease_device_v1*             leaseDevice,
     uint32_t                                    pConnectorCount,
     VkWaylandLeaseConnectorEXT*                 pConnectors);
 #endif
